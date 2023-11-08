@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Pokemon</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="types.css" />
+
+</head>
+
+<body>
+  <div class="app">
+    <div class="textbox-container">
+      <input class="textbox" type="textarea" onkeydown="checKey(event)" placeholder="Insert a pokemon name"></input>
+      <a class="button-search">Search</a>
+    </div>
+    <h2 id="error">There is no such pokemon</h2>
+    <section class="fetched-data">
+      <h1 class="pokemon-name">NULL</h1>
+      <div class="flex data">
+        <img id="artwork" alt="Pokemon Artwork" src="" >
+        <div class="stats-container">
+          <div class="physical-stats">
+            <p class="status-line" id="height"></p>
+            <p class="status-line" id="weight"></p>
+          </div>
+          <div class="abilities-container">
+            <p>NAN</p>
+            <p>NAN</p>
+            <p>NAN</p>
+            <p>NAN</p>
+          </div>
+          <div class="types-container">
+            <p>NAN</p>
+            <p>NAN</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

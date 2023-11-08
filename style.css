@@ -1,0 +1,103 @@
+:root {
+  --indigo: #0B4F6C;
+  --green: #20BF55;
+  --cyan: #01baef;
+  --white: #FBFBFF;
+  --gray: #333;
+  color: var(--white);
+}
+* {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray);
+  min-height: 100vh;
+}
+
+#error {
+  color: var(--gray);
+  margin: 1em 0;
+  text-align: center;
+  font-size: 2rem;
+  display: none;
+}
+
+.app {
+  background-color: var(--indigo);
+	padding: 2em;
+	border-radius: 1.5em;
+  min-width: 400px;
+  margin: 0 20px;
+}
+
+.textbox {
+	background-color: var(--gray);
+	border: none;
+	color: var(--white);
+	font-size: 1.5rem;
+	outline: none;
+	padding: 5px;
+	border-radius: 0.5em;
+	text-align: center;
+	z-index: 1;
+}
+
+.button-search {
+	cursor: pointer;
+	background-color: var(--cyan);
+	margin-left: -20px;
+	padding: 0.5em;
+	padding-left: 1em;
+	font-size: 1.5rem;
+	border-radius: 0.5em;
+}
+
+.button-search:active {
+	background-color: var(--indigo);
+}
+
+.fetched-data {
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.pokemon-name {
+ 	font-size: 3rem;
+	text-align: center;
+}
+.textbox-container {
+  display: flex;
+  justify-content: center;
+}
+
+.flex {
+   display: flex;
+}
+
+.data {
+   flex-direction: column;
+}
+
+.data * {
+	margin: 0.5em 1em;
+}
+
+.abilities-container, .types-container, .physical-stats {
+	display: flex;
+	justify-content: space-evenly;
+  text-align: center;
+  flex: 1 1 0px;
+}
+
+.types-container * {
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
