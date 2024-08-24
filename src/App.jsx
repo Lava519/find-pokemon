@@ -18,7 +18,6 @@ function App() {
     data.results.forEach((item) => {
       pl.push(item.name);
     })
-    console.log(pl.length > 0)
     setPokemonList(pl);
   }
   useEffect(()=>{
@@ -29,20 +28,20 @@ function App() {
     <div className='flex h-screen items-center justify-center'>
       {loading ? 
       <Loading active={pokemonList > 0} trigger={()=>{setLoading(false)}}></Loading> : 
-      stateSwitch(state, setState)
+      stateSwitch(state, setState, pokemonList)
       }
     </div>
     </>
   )
 }
 
-function stateSwitch(state, setState) {
+function stateSwitch(state, setState, pokemonList) {
   switch (state) {
     case "Home":
       return (<Home state={setState}></Home>);
       break;
     case "Search":
-      return (<Search state={setState}></Search>);
+      return (<Search state={setState} pokeList={pokemonList}></Search>);
       break;
     case "Pokemon":
       return (<Pokemon state={setState}></Pokemon>);
