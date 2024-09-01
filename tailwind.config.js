@@ -20,6 +20,12 @@ export default {
           "60%": { scale: "1.7" },
           "100%": { scale: "1" }
         },
+        "pop-in-delayed": {
+          "0%": { scale: "0" },
+          "90%": { scale: "0" },
+          "95%": { scale: "0.2" },
+          "100%": { scale: "1" }
+        },
         "pop-out": {
           "0%": { scale: "1" },
           "60%": { scale: "1.7" },

@@ -1,17 +1,53 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import StatBar from './StatBar';
+import axios from 'axios';
 
-function Pokemon({state}) {
-  const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]")
-  function handleSubmit(e){
+function Pokemon({pokemon, state}) {
+  const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]");
+  const [pokemonData, setPokemonData] = useState(null);
+  useEffect(()=> {
+    async function fetchPokemon() {
+      let {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);  
+      setPokemonData(data);
+    }
+    fetchPokemon();
+  },[]);
+  function handleBack(e){
     e.preventDefault();
     setCurrAnimation("animate-[pop-out_0.5s_forwards]");
     setTimeout(() => {
-      state("Pokemon");
+      state("Home");
     }, 500);
   }
   return (
-    <div>
-        <h1>Pokemon</h1>
+    <div className='w-3/4'>
+      <button onClick={handleBack} className='animate-[pop-in-delayed_0.5s_forwards] absolute top-16 left-16 rounded-full bg-poke-gray p-6'><img src="./back.svg"></img></button>
+      {
+        pokemonData &&
+        <div className='flex'>
+          <div className='flex basis-3/5'>
+            <div>
+              <img src={pokemonData.sprites.other["official-artwork"].front_default}></img>
+            </div>
+            <ul className='flex flex-col justify-evenly'>
+              <li>Name: {pokemonData.name}</li>
+              <li>Type: {pokemonData.name}</li>
+              <li>ID: {pokemonData.id}</li>
+              <li>Height: {pokemonData.height}</li>
+              <li>Weight: {pokemonData.weight}</li>
+            </ul>
+          </div>
+          <ul className='flex flex-col justify-evenly basis-2/5'>
+            <li ><StatBar title={pokemonData.stats[0].stat.name} value={pokemonData.stats[0].base_stat}></StatBar></li>
+            <li><StatBar title={pokemonData.stats[1].stat.name} value={pokemonData.stats[1].base_stat}></StatBar></li>
+            <li><StatBar title={pokemonData.stats[2].stat.name} value={pokemonData.stats[2].base_stat}></StatBar></li>
+            <li><StatBar title={pokemonData.stats[3].stat.name} value={pokemonData.stats[3].base_stat}></StatBar></li>
+            <li><StatBar title={pokemonData.stats[4].stat.name} value={pokemonData.stats[4].base_stat}></StatBar></li>
+            <li><StatBar title={pokemonData.stats[5].stat.name} value={pokemonData.stats[5].base_stat}></StatBar></li>
+          </ul>
+        </div>
+      }
+
     </div>
   )
 }

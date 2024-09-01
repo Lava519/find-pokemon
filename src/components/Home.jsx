@@ -1,12 +1,22 @@
 import { useState } from 'react'
 
-function Home({state}) {
+function Home({state, pokeList}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]")
   function handleClick(location){
-    setCurrAnimation("animate-[pop-out_0.5s_forwards]");
-    setTimeout(() => {
-      state(location);
-    }, 500);
+    console.log(pokeList[0]);
+    if (location === "Search") {
+      setCurrAnimation("animate-[pop-out_0.5s_forwards]");
+      setTimeout(() => {
+        state(location);
+      }, 500);
+    } else {
+      setCurrAnimation("animate-[pop-out_0.5s_forwards]");
+      setTimeout(() => {
+        let poke = Math.floor(Math.random() * pokeList.length-1);
+        state(pokeList[poke]);
+      }, 500);
+    }
+
   }
   return (
     <div className={`flex flex-col gap-6 ${currAnimation}`}>

@@ -10,6 +10,7 @@ function App() {
 
   const URL="https://pokeapi.co/api/v2/";
   const [pokemonList, setPokemonList] = useState([]);
+  const [currPokemon, setCurrPokemon] = useState(null);
   const [state, setState] = useState("Home");
   const [loading, setLoading] = useState(true)
   async function getPokemonList() {
@@ -25,7 +26,7 @@ function App() {
   },[])
   return (
     <>
-    <div className='flex h-screen items-center justify-center'>
+    <div className='flex overflow-hidden h-screen items-center justify-center'>
       {loading ? 
       <Loading active={pokemonList > 0} trigger={()=>{setLoading(false)}}></Loading> : 
       stateSwitch(state, setState, pokemonList)
@@ -38,15 +39,13 @@ function App() {
 function stateSwitch(state, setState, pokemonList) {
   switch (state) {
     case "Home":
-      return (<Home state={setState}></Home>);
+      return (<Home state={setState} pokeList={pokemonList}></Home>);
       break;
     case "Search":
       return (<Search state={setState} pokeList={pokemonList}></Search>);
       break;
-    case "Pokemon":
-      return (<Pokemon state={setState}></Pokemon>);
-      break;
     default:
+      return (<Pokemon pokemon={state} state={setState}></Pokemon>);
       break;
   }
 }
