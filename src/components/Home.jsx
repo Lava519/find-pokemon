@@ -3,7 +3,6 @@ import { useState } from 'react'
 function Home({state, pokeList}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]")
   function handleClick(location){
-    console.log(pokeList[0]);
     if (location === "Search") {
       setCurrAnimation("animate-[pop-out_0.5s_forwards]");
       setTimeout(() => {
