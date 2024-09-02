@@ -26,6 +26,10 @@ export default {
           "95%": { scale: "0.2" },
           "100%": { scale: "1" }
         },
+        "shrink-x": {
+          "0%": { width: "100%" },
+          "100%": { width: "0%" },
+        },
         "pop-out": {
           "0%": { scale: "1" },
           "60%": { scale: "1.7" },
