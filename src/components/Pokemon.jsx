@@ -52,7 +52,6 @@ function Pokemon({pokemon, state}) {
           </ul>
         </div>
       }
-
     </div>
   )
 }
