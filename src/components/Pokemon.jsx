@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import StatBar from './StatBar';
+import Types from './Types';
 import axios from 'axios';
+import { Initialize } from '../utils';
 
 function Pokemon({pokemon, state}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]");
@@ -35,8 +37,8 @@ function Pokemon({pokemon, state}) {
               <img src={pokemonData.sprites.other["official-artwork"].front_default}></img>
             </div>
             <ul className='flex flex-col justify-evenly min-w-52 px-4'>
-              <li>Name: {pokemonData.name}</li>
-              <li>Type: {pokemonData.name}</li>
+              <li>Name: {Initialize(pokemonData.name)}</li>
+              <li>Type: <Types types={pokemonData.types}></Types></li>
               <li>ID: {pokemonData.id}</li>
               <li>Height: {pokemonData.height}</li>
               <li>Weight: {pokemonData.weight}</li>

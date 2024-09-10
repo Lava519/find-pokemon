@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Initialize } from '../utils';
 
 function Search({state, pokeList, query}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]");
@@ -7,8 +8,9 @@ function Search({state, pokeList, query}) {
   function handleSearchChange(e) {
     e.preventDefault();
     let k = [];
-    if (e.target.value.length > 1) {
-      let pattern = new RegExp(`^${e.target.value}`)
+    let query = e.target.value.toLowerCase();
+    if (query.length > 1) {
+      let pattern = new RegExp(`^${query}`)
       for (let i = 0; i < pokeList.length; ++ i) {
         if (k.length > 4)
           break;
@@ -58,7 +60,7 @@ function Search({state, pokeList, query}) {
         <div className='absolute top-full flex flex-col items-center w-full gap-6 bg-poke-gray rounded-3xl'>
           {autocomplete.map((pokemon)=> {
             return (
-              <a onClick={()=>{selectPokemon(pokemon.name)}} className="text-3xl cursor-pointer transition hover:scale-110" key={pokemon.id}>{pokemon.name}</a>
+              <a onClick={()=>{selectPokemon(pokemon.name)}} className="text-3xl cursor-pointer transition hover:scale-110" key={pokemon.id}>{Initialize(pokemon.name)}</a>
             )
           })}
         </div>
