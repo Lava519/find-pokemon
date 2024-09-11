@@ -15,3 +15,11 @@ export function Initialize(string) {
     }
     return out;
 }
+
+export function Height(string) {
+    return Number(string)/10+"m"
+}
+
+export function Weight(string) {
+    return Number(string)/10+"kg"
+}

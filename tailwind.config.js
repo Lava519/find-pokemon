@@ -3,6 +3,10 @@ export default {
   content: ["./src/*.jsx", "./src/*/*.jsx"],
   theme: {
     extend: {
+      screens: {
+        'sc-h': { 'raw': '(max-height: 700px)' },
+        // => @media (min-height: 800px) { ... }
+      },
       colors: {
         'poke-red': '#f00000',
         'poke-black': '#222224',
@@ -28,6 +32,7 @@ export default {
         },
         "shrink-x": {
           "0%": { width: "100%" },
+          "50%": { width: "100%" },
           "100%": { width: "0%" },
         },
         "pop-out": {

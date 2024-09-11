@@ -60,7 +60,7 @@ function Search({state, pokeList, query}) {
         <div className='absolute top-full flex flex-col items-center w-full gap-6 bg-poke-gray rounded-3xl'>
           {autocomplete.map((pokemon)=> {
             return (
-              <a onClick={()=>{selectPokemon(pokemon.name)}} className="text-3xl cursor-pointer transition hover:scale-110" key={pokemon.id}>{Initialize(pokemon.name)}</a>
+              <a onClick={()=>{selectPokemon(pokemon.name)}} className="text-3xl cursor-pointer transition hover:scale-110 py-1" key={pokemon.id}>{Initialize(pokemon.name)}</a>
             )
           })}
         </div>
