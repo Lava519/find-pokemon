@@ -29,7 +29,7 @@ function Pokemon({pokemon, state}) {
       {
         loaded &&
         <div className={`flex flex-col gap-10 ${currAnimation} lg:flex-row sc-h:mt-[150px]`}>
-          <div className='flex basis-3/5 bg-poke-gray p-4 min-w-[450px] rounded-2xl'>
+          <div className='flex basis-3/5 bg-poke-gray p-4 min-w-[350px] rounded-2xl'>
             <div className='bg-poke-black rounded-2xl'>
               <img src={pokemonData.sprites.other["official-artwork"].front_default}></img>
             </div>
