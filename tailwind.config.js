@@ -43,6 +43,10 @@ export default {
         "rotate": {
           "0%": { transform: "rotate(0)" },
           "100%": { transform: "rotate(360deg)"},
+        },
+        "drop-down": {
+          "0%": { "margin-top": "-100%" },
+          "100%": { "margin-top": "0" },
         }
       }
     },

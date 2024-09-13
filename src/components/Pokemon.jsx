@@ -14,7 +14,7 @@ function Pokemon({pokemon, state}) {
       setPokemonData(data);
     }
     fetchPokemon();
-  },[]);
+  },[pokemon]);
   function handleBack(e){
     e.preventDefault();
     setCurrAnimation("animate-[pop-out_0.5s_forwards]");
@@ -25,11 +25,10 @@ function Pokemon({pokemon, state}) {
   return (
     <div className='grow mx-20'>
       {pokemonData && <img className='hidden' onLoad={()=>{setLoaded(true)}} src={pokemonData.sprites.other["official-artwork"].front_default}></img>}
-      <button onClick={handleBack} className='z-50 animate-[pop-in-delayed_0.5s_forwards] absolute top-16 left-16 rounded-full bg-poke-gray p-6'><img src="./back.svg"></img></button>
       {
         loaded &&
-        <div className={`flex flex-col gap-10 ${currAnimation} lg:flex-row sc-h:mt-[150px]`}>
-          <div className='flex basis-3/5 bg-poke-gray p-4 min-w-[318px] rounded-2xl'>
+        <div className={`flex flex-col gap-10 ${currAnimation} lg:flex-row sc-h:mt-[90px]`}>
+          <div className='flex basis-3/5 bg-poke-gray p-4 min-w-[318px] rounded-2xl relative'>
             <div className='bg-poke-black rounded-2xl min-w-[200px]'>
               <img src={pokemonData.sprites.other["official-artwork"].front_default}></img>
             </div>

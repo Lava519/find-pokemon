@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Menu from './components/Menu';
 import Home from './components/Home'
 import Search from './components/Search'
 import Pokemon from './components/Pokemon';
@@ -25,7 +26,10 @@ function App() {
     getPokemonList();
   },[])
   return (
-    <>
+    <> 
+    { !loading &&
+          <Menu state={state} setState={setState} pokeList={pokemonList}></Menu>
+    }
     <div className='flex overflow-hidden h-screen items-center justify-center'>
       {loading ? 
       <Loading active={pokemonList > 0} trigger={()=>{setLoading(false)}}></Loading> : 
