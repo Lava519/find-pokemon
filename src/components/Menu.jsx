@@ -16,7 +16,7 @@ export default function Menu({state, setState, pokeList}) {
         return null;
     else
         return (
-            <div style={ active ? {width: "100%", height: "90px"} : {}} className={`absolute z-50 top-0 left-0 right-0 mx-auto w-32 h-12 bg-poke-gray rounded-b-full transition-all max-w-96`}>
+            <div style={ active ? {width: "100%", height: "90px"} : {}} className={`absolute z-50 top-0 left-0 right-0 mx-auto w-32 h-12 bg-poke-gray rounded-b-full transition-all max-w-96 animate-[drop-down_0.5s_forwards]`}>
                 {/*<button className='animate-[pop-in-delayed_0.5s_forwards] absolute top-16 left-16 rounded-full bg-poke-gray p-6'><img src="./back.svg"></img></button>*/}
                 {isActive(active, toggleActive, setState, pokeList)}
             </div>

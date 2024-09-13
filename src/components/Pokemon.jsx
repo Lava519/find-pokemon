@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import StatBar from './StatBar';
 import Types from './Types';
 import axios from 'axios';
@@ -7,7 +7,19 @@ import { Initialize, Height, Weight } from '../utils';
 function Pokemon({pokemon, state}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]");
   const [loaded, setLoaded] = useState(false);
+  const imageLoaded = useRef(false);
   const [pokemonData, setPokemonData] = useState(null);
+
+  function setStateLoaded(bool) {
+    setLoaded(bool)
+    imageLoaded.current = bool;
+  }
+  useEffect(()=> {
+    setTimeout(() => {
+      if (!imageLoaded.current)
+        state("Home");
+    }, 3000);
+  },[])
   useEffect(()=> {
     async function fetchPokemon() {
       let {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);  
@@ -24,7 +36,7 @@ function Pokemon({pokemon, state}) {
   }
   return (
     <div className='grow mx-20'>
-      {pokemonData && <img className='hidden' onLoad={()=>{setLoaded(true)}} src={pokemonData.sprites.other["official-artwork"].front_default}></img>}
+      {pokemonData && <img className='hidden' onLoad={()=>{setStateLoaded(true)}} src={pokemonData.sprites.other["official-artwork"].front_default}></img>}
       {
         loaded &&
         <div className={`flex flex-col gap-10 ${currAnimation} lg:flex-row sc-h:mt-[90px]`}>
