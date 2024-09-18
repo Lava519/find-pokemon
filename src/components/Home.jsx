@@ -1,19 +1,14 @@
 import { useState } from 'react'
+import { stateChange } from '../utils';
 
 function Home({state, pokeList}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]")
   function handleClick(location){
     if (location === "Search") {
-      setCurrAnimation("animate-[pop-out_0.5s_forwards]");
-      setTimeout(() => {
-        state(location);
-      }, 500);
+      stateChange(setCurrAnimation, 'pop-out', state, location, 500);
     } else {
-      setCurrAnimation("animate-[pop-out_0.5s_forwards]");
-      setTimeout(() => {
-        let poke = Math.floor(Math.random() * pokeList.length-1);
-        state(pokeList[poke]);
-      }, 500);
+      let poke = Math.floor(Math.random() * pokeList.length-1);
+      stateChange(setCurrAnimation, 'pop-out', state, pokeList[poke], 500);
     }
 
   }

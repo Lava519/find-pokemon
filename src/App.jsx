@@ -11,7 +11,6 @@ function App() {
 
   const URL="https://pokeapi.co/api/v2/";
   const [pokemonList, setPokemonList] = useState([]);
-  const [currPokemon, setCurrPokemon] = useState(null);
   const [state, setState] = useState("Home");
   const [loading, setLoading] = useState(true)
   async function getPokemonList() {

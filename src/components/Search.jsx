@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Initialize } from '../utils';
+import { Initialize, stateChange } from '../utils';
 
-function Search({state, pokeList, query}) {
+function Search({state, pokeList}) {
   const [currAnimation, setCurrAnimation] = useState("animate-[pop-in_0.5s_forwards]");
   const [currPokemon, setCurrPokemon] = useState(null);
   const [autocomplete, setAutocomplete] = useState([]);
@@ -28,33 +28,22 @@ function Search({state, pokeList, query}) {
 
   function handleBack(e){
     e.preventDefault();
-    setCurrAnimation("animate-[pop-out_0.5s_forwards]");
-    setTimeout(() => {
-      state("Home");
-    }, 500);
+    stateChange(setCurrAnimation, "pop-out", state, "Home", 500);
   }
 
   function selectPokemon(pokemon) {
-    if (pokemon) {
-      setCurrAnimation("animate-[pop-out_0.5s_forwards]");
-      setTimeout(() => {
-        state(pokemon);
-      }, 500);
-    }
+    if (pokemon) 
+      stateChange(setCurrAnimation, "pop-out", state, pokemon, 500);
   }
 
   function handleSubmit(e){
     e.preventDefault();
     if (currPokemon) {
-      setCurrAnimation("animate-[pop-out_0.5s_forwards]");
-      setTimeout(() => {
-        state(currPokemon);
-      }, 500);
+      stateChange(setCurrAnimation, "pop-out", state, currPokemon, 500);
     }
   }
   return (
     <div className={`flex h-screen w-screen items-center justify-center ${currAnimation}`}>
-    <button onClick={handleBack} className='animate-[pop-in-delayed_0.5s_forwards] absolute top-16 left-16 rounded-full bg-poke-gray p-6'><img src="./back.svg"></img></button>
     <form onSubmit={handleSubmit} className='relative flex'>
         <input onChange={handleSearchChange} className='text-center text-poke-black outline-none p-4 pr-[65px] text-2xl bg-poke-white rounded-3xl min-w-80' /><button action="submit" className='ml-[-60px] rounded-xl p-2 bg-poke-red flex justify-cemter items-center'><img src="./search.svg"></img></button>
         <div className='absolute top-full flex flex-col items-center w-full gap-6 bg-poke-gray rounded-3xl'>
