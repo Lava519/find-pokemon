@@ -21,6 +21,7 @@ function Pokemon({pokemon, state}) {
     }, 3000);
   },[])
   useEffect(()=> {
+    setStateLoaded(false);
     async function fetchPokemon() {
       let {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);  
       setPokemonData(data);
